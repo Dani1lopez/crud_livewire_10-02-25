@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TagSeeder::class);
 
-        Article::factory(50)->create();
+        Article::factory(100)->create();
     }
 }
