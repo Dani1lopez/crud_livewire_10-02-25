@@ -8,22 +8,34 @@ use Livewire\Attributes\Rule;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
-class FormCrearArticle extends Form
+class FormUpdateArticle extends Form
 {
-    #[Rule(['required','string','min:3','max:50','unique:articles,title'])]
+    public ?Article $article=null;
+
     public string $title="";
     #[Rule(['required','string','min:10','max:450'])]
     public string $content="";
     #[Rule(['required','exists:tags,id'])]
     public int $tag_id=-1;
 
-    public function formStore(){
+    public function rules(){
+        return [
+            'title'=>['required','string','min:3','max:50','unique:articles,title,'.$this->article->id]
+        ];
+    }
+
+    public function setArticle(Article $article){
+        $this->article=$article;
+        $this->title=$article->title;
+        $this->content=$article->content;
+        $this->tag_id=$article->tag_id;
+    }
+    public function formUpdate(){
         $this->validate();
-        Article::create([
+        $this->article->update([
             'title'=>$this->title,
             'content'=>$this->content,
             'tag_id'=>$this->tag_id,
-            'user_id'=>Auth::id(),
         ]);
     }
 
@@ -31,6 +43,4 @@ class FormCrearArticle extends Form
         $this->resetValidation();
         $this->reset();
     }
-
-
 }

@@ -50,6 +50,32 @@
     @stack('modals')
 
     @livewireScripts
+
+    <script>
+        Livewire.on('mensaje', txt => {
+            Swal.fire({
+                icon: "success",
+                title: txt,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        })
+        Livewire.on('onBorrarArticle', id => {
+            Swal.fire({
+                title: "¿Estás seguro?",
+                text: "¡No podrás revertir esto!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Sí, ¡eliminar!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Livewire.dispatchTo('show-user-articles','borrar',id)
+                }
+            });
+        })
+    </script>
 </body>
 
 </html>

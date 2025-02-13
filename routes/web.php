@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\InicioController;
 use App\Livewire\ShowUserArticles;
 use Illuminate\Support\Facades\Route;
@@ -16,3 +17,5 @@ Route::middleware([
     })->name('dashboard');
     Route::get('/userarticles',ShowUserArticles::class)->name('showuserarticles');
 });
+Route::get('contacto',[ContactoController::class, 'pintarFormulario'])->name('contacto.pintar');
+Route::post('contacto',[ContactoController::class, 'procesarFormulario'])->name('contacto.procesar');

@@ -45,7 +45,7 @@
 
                                 <!-- Descripción -->
                                 <p class="mt-2 text-sm text-gray-200 line-clamp-3">
-                                    {{ $item->description }}
+                                    {{ $item->content }}
                                 </p>
                             </div>
 

@@ -18,10 +18,11 @@
                         <i class="fas fa-heading mr-1 text-gray-500"></i> Título del Artículo:
                     </label>
                     <div class="relative">
-                        <input type="text" id="title" name="title"
+                        <input type="text" id="title" name="title" wire:model="cform.title"
                             class="block w-full px-4 py-2 mt-1 text-gray-900 bg-gray-50 rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-200"
                             placeholder="Título impactante">
                     </div>
+                    <x-input-error for="cform.title"></x-input-error>
                 </div>
 
                 <div class="mt-6">
@@ -29,10 +30,11 @@
                         <i class="fas fa-paragraph mr-1 text-gray-500"></i> Contenido Principal:
                     </label>
                     <div class="relative">
-                        <textarea id="content" name="content" rows="5"
+                        <textarea id="content" name="content" rows="5" wire:model="cform.content"
                             class="block w-full px-4 py-2 mt-1 text-gray-900 bg-gray-50 rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-200"
                             placeholder="Desarrolla tu artículo..."></textarea>
                     </div>
+                    <x-input-error for="cform.content"></x-input-error>
                 </div>
 
                 <div class="mt-6 mb-8">
@@ -40,20 +42,19 @@
                         <i class="fas fa-tags mr-1 text-gray-500"></i> Etiquetas Temáticas:
                     </label>
                     <div class="relative">
-                        <select id="tags" name="tags"
+                        <select id="tags" name="tags" wire:model="cform.tag_id"
                             class="block w-full px-4 py-2 mt-1 text-gray-900 bg-gray-50 rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-200">
                             <option value="">Selecciona etiqueta</option>
-                            <option value="tecnologia">Tecnología</option>
-                            <option value="ciencia">Ciencia</option>
-                            <option value="opinion">Opinión</option>
-                            <option value="tutorial">Tutoriales</option>
-                            <option value="otro">Otros</option>
+                            @foreach ($tags as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
                         </select>
                     </div>
+                    <x-input-error for="cform.tag_id"></x-input-error>
                 </div>
 
                 <div class="flex justify-end mt-8 space-x-4">
-                    <button type="reset"
+                    <button type="reset" wire:click="cancelar"
                         class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500">
                         <i class="fas fa-ban mr-2"></i>Cancelar
                     </button>
@@ -61,7 +62,7 @@
                         class="px-4 py-2 text-sm font-medium text-gray-700 bg-blue-100 rounded-md hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <i class="fas fa-sync-alt mr-2"></i>Resetear
                     </button>
-                    <button type="submit"
+                    <button type="submit" wire:click="store"
                         class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                         <i class="fas fa-paper-plane mr-2"></i>Publicar
                     </button>
