@@ -19,6 +19,9 @@
                         <x-nav-link href="{{ route('showuserarticles') }}" :active="request()->routeIs('showuserarticles')">
                             <i class="fa-solid fa-gear mr-1"></i>Articles
                         </x-nav-link>
+                        <x-nav-link href="{{ route('tags.index') }}" :active="request()->routeIs('tags.index')">
+                            <i class="fa-solid fa-list mr-1"></i>Tags
+                        </x-nav-link>
                     @endauth
                     <x-nav-link href="{{ route('contacto.pintar') }}" :active="request()->routeIs('contacto.*')">
                         <i class="fa-solid fa-envelope mr-1"></i>Contáctanos

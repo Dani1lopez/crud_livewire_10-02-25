@@ -20,7 +20,7 @@ class FormUpdateArticle extends Form
 
     public function rules(){
         return [
-            'title'=>['required','string','min:3','max:50','unique:articles,title,'.$this->article->id]
+            'title'=>['required','string','min:3','max:50','unique:articles,title,' . $this->article->id]
         ];
     }
 
@@ -31,6 +31,7 @@ class FormUpdateArticle extends Form
         $this->tag_id=$article->tag_id;
     }
     public function formUpdate(){
+        $this->title = trim($this->title);//He puesto esto asi porque cuando copia y pegaba el nombre de otro se quedaba un espacio en blanco por lo cual parecia que eran iguales y que la validacion habia fallado pero en realidad no es porque tiene un espacio en blanco
         $this->validate();
         $this->article->update([
             'title'=>$this->title,

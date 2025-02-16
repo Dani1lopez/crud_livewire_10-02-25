@@ -121,5 +121,10 @@
                 });
             });
         </script>
+        @session('mensaje')
+        <script>
+            Swal.fire("{{session('mensaje')}}");
+        </script>
+        @endsession
     </x-self.base>
 </x-app-layout>

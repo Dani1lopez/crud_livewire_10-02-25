@@ -169,9 +169,9 @@
                                 <i class="fas fa-tags mr-1 text-gray-500"></i> Etiquetas Temáticas:
                             </label>
                             <div class="relative">
-                                <select id="tags" name="tags" wire:model="uform.tag_id"
+                                <select id="tag" name="tag" wire:model="uform.tag_id"
                                     class="block w-full px-4 py-2 mt-1 text-gray-900 bg-gray-50 rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-200">
-                                    <option value="">Selecciona etiqueta</option>
+                                    <option value="-1">Selecciona etiqueta</option>
                                     @foreach ($tags as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
@@ -206,7 +206,7 @@
                     <div class="text-2xl font-semibold text-gray-900 border-b pb-2">
                         {{-- Puedes descomentar la siguiente línea si quieres mostrar el título dinámicamente.  --}}
                         {{-- {{ $postDetalle->titulo ?? 'Detalle del Post' }} --}}
-                        Detalle del Post
+                        Detalle del Articulo
                     </div>
                 </x-slot>
 
