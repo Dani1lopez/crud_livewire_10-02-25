@@ -109,3 +109,101 @@ A continuación, se describen las entidades principales del proyecto:
    ```bash
    git clone <URL_DEL_REPOSITORIO>
    cd <NOMBRE_DE_LA_CARPETA>
+```
+
+2. **Instalar dependencias de PHP**
+```bash
+composer install
+```
+
+3. **Instalar dependencias de Node.js**
+```bash
+npm install
+npm run build
+```
+
+4. **Configurar el entorno**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+5. **Configurar la base de datos**
+- Editar el archivo `.env` con los datos de conexión a tu base de datos
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=tu_base_de_datos
+DB_USERNAME=tu_usuario
+DB_PASSWORD=tu_contraseña
+```
+
+6. **Configurar el correo electrónico**
+- Para pruebas locales, se recomienda usar Mailtrap
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=tu_usuario_mailtrap
+MAIL_PASSWORD=tu_password_mailtrap
+```
+
+7. **Ejecutar las migraciones y seeders**
+```bash
+php artisan migrate --seed
+```
+
+---
+
+## Uso del Proyecto
+
+1. **Iniciar el servidor de desarrollo**
+```bash
+php artisan serve
+```
+El proyecto estará disponible en `http://localhost:8000`
+
+2. **Credenciales por defecto**
+- Usuario administrador:
+    - Email: admin@example.com
+    - Password: password
+- Usuario regular:
+    - Email: user@example.com
+    - Password: password
+
+3. **Características principales**
+- Sistema de autenticación completo
+- CRUD de artículos con sistema de etiquetas
+- Panel de administración para gestionar etiquetas
+- Formulario de contacto funcional
+- Roles de usuario (admin/regular)
+
+---
+
+## Generación de Datos de Prueba
+
+Para generar datos de prueba adicionales:
+```bash
+php artisan db:seed
+```
+Esto creará:
+- Usuarios de prueba
+- Artículos de ejemplo
+- Etiquetas predefinidas
+
+---
+
+## Contribuir
+
+1. Haz un Fork del proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Haz commit de tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+---
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles.
